@@ -1,0 +1,6 @@
+[emoji.html](https://github.com/user-attachments/files/22340909/emoji.html)
+[game.html](https://github.com/user-attachments/files/22340882/game.html)
+[index.html](https://github.com/user-attachments/files/22340854/index.html)
+[names.html](https://github.com/user-attachments/files/22340810/names.html)
+[script.js](https://github.com/user-attachments/files/22340770/script.js)
+[style.css](https://github.com/user-attachments/files/22340726/style.css)
