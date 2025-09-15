@@ -1,0 +1,179 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.card {
+  background: #ffffffcc;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+}
+
+h1,
+h2 {
+  color: #2d3436;
+  margin-bottom: 20px;
+}
+
+input,
+select {
+  padding: 8px 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 2px solid #b2bec3;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #6c5ce7;
+  color: white;
+  font-size: 1rem;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #a29bfe;
+  transform: scale(1.05);
+}
+
+.error-box {
+  color: #fff;
+  background: #d63031;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 8px;
+  display: none;
+  font-weight: bold;
+}
+
+/* Game Board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, 70px);
+  grid-template-rows: repeat(5, 70px);
+  gap: 10px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.cell {
+  background: #ffeaa7;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cell:hover {
+  background: #fab1a0;
+  transform: scale(1.1);
+}
+
+.cell.win {
+  background: #55efc4 !important;
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #00cec9;
+  }
+  to {
+    box-shadow: 0 0 25px #00cec9;
+  }
+}
+
+.player-info,
+.scoreboard,
+.turn,
+.winner {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+/* Victory Tab Popup */
+#victoryTab {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#victoryTab.hidden {
+  display: none;
+}
+
+.victory-card {
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  animation: popIn 0.5s ease;
+}
+
+.victory-card h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2d3436;
+}
+
+.victory-card p {
+  font-size: 1.4rem;
+  margin: 20px 0;
+}
+
+.victory-card button {
+  padding: 12px 25px;
+  background: #00cec9;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.victory-card button:hover {
+  background: #55efc4;
+  transform: scale(1.1);
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe - Start</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="page">
+      <div class="card">
+        <h1>🎮 Emoji Tic Tac Toe</h1>
+        <p>Welcome! Let’s play a fun game.</p>
+        <label>How many players?</label>
+        <input
+          type="number"
+          id="playerNumber"
+          min="2"
+          max="3"
+          placeholder="Enter 2 or 3"
+        />
+        <div id="frontError" class="error-box"></div>
+        <button id="proceedBtn">Proceed ➡️</button>
+      </div>
+    </section>
+
+    <script>
+      document.getElementById("proceedBtn").addEventListener("click", () => {
+        const num = parseInt(document.getElementById("playerNumber").value);
+        const errorBox = document.getElementById("frontError");
+        if (isNaN(num) || num < 2 || num > 3) {
+          errorBox.textContent = "⚠️ Please enter 2 or 3 players!";
+          errorBox.style.display = "block";
+          return;
+        }
+        localStorage.setItem("playerCount", num);
+        window.location.href = "names.html";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe - Names</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="page">
+      <div class="card">
+        <h2>✍️ Enter Player Names</h2>
+        <div id="nameInputs"></div>
+        <div id="nameError" class="error-box"></div>
+        <button id="nextBtn">Next ➡️</button>
+        <button onclick="window.location.href='index.html'">⬅️ Back</button>
+      </div>
+    </section>
+
+    <script>
+      const playerCount = parseInt(localStorage.getItem("playerCount")) || 2;
+      const nameInputsDiv = document.getElementById("nameInputs");
+
+      // Create inputs dynamically
+      for (let i = 0; i < playerCount; i++) {
+        let input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = `Enter Player ${i + 1} name`;
+        input.id = `playerName${i}`;
+        nameInputsDiv.appendChild(input);
+        nameInputsDiv.appendChild(document.createElement("br"));
+      }
+
+      document.getElementById("nextBtn").addEventListener("click", () => {
+        const errorBox = document.getElementById("nameError");
+        let names = [];
+        for (let i = 0; i < playerCount; i++) {
+          let name = document.getElementById(`playerName${i}`).value.trim();
+          if (!name) {
+            errorBox.textContent = "⚠️ All names must be filled!";
+            errorBox.style.display = "block";
+            return;
+          }
+          if (names.includes(name)) {
+            errorBox.textContent = "⚠️ Names must be unique!";
+            errorBox.style.display = "block";
+            return;
+          }
+          names.push(name);
+        }
+        localStorage.setItem("playerNames", JSON.stringify(names));
+        window.location.href = "emoji.html";
+      });
+    </script>
+  </body>
+</html>

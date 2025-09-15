@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe - Emoji</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="page">
+      <div class="card">
+        <h2>🎭 Choose Emojis</h2>
+        <div id="emojiInputs"></div>
+
+        <label>Win Condition:</label>
+        <select id="winCondition">
+          <option value="3">3 in a row</option>
+          <option value="4">4 in a row</option>
+          <option value="5" selected>5 in a row</option>
+        </select>
+
+        <div id="emojiError" class="error-box"></div>
+        <button id="startGame">Start Game 🚀</button>
+        <button onclick="window.location.href='names.html'">⬅️ Back</button>
+      </div>
+    </section>
+
+    <script>
+      const names = JSON.parse(localStorage.getItem("playerNames")) || [];
+      const emojiInputsDiv = document.getElementById("emojiInputs");
+      const emojiList = [
+        "😀",
+        "😎",
+        "😂",
+        "😍",
+        "😡",
+        "🤩",
+        "🤖",
+        "🐱",
+        "🐶",
+        "🐼",
+        "🐸",
+        "🍎",
+        "🍕",
+        "⚽",
+        "🎲",
+        "🎵",
+      ];
+
+      names.forEach((name, i) => {
+        let wrapper = document.createElement("div");
+        let label = document.createElement("label");
+        label.textContent = `${name}'s Emoji: `;
+        let select = document.createElement("select");
+        select.id = `playerEmoji${i}`;
+        emojiList.forEach((e) => {
+          let opt = document.createElement("option");
+          opt.value = e;
+          opt.textContent = e;
+          select.appendChild(opt);
+        });
+        wrapper.appendChild(label);
+        wrapper.appendChild(select);
+        emojiInputsDiv.appendChild(wrapper);
+      });
+
+      document.getElementById("startGame").addEventListener("click", () => {
+        const errorBox = document.getElementById("emojiError");
+        let emojis = [];
+        for (let i = 0; i < names.length; i++) {
+          let emoji = document.getElementById(`playerEmoji${i}`).value;
+          if (emojis.includes(emoji)) {
+            errorBox.textContent = "⚠️ Emojis must be unique!";
+            errorBox.style.display = "block";
+            return;
+          }
+          emojis.push(emoji);
+        }
+        localStorage.setItem("playerEmojis", JSON.stringify(emojis));
+        localStorage.setItem(
+          "winCondition",
+          document.getElementById("winCondition").value
+        );
+        window.location.href = "game.html";
+      });
+    </script>
+  </body>
+</html>
